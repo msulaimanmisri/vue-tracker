@@ -1,10 +1,12 @@
 <template>
-  <div class="container">
-    <Header />
-    <Hero />
-    <IncomeExpenses />
-    <addTransaction />
-    <TransactionList :transactions="transactions" />
+  <div class="container my-5">
+    <div class="col-6 mx-auto">
+      <Header />
+      <Hero />
+      <IncomeExpenses />
+      <addTransaction />
+      <TransactionList :transactions="transactions" />
+    </div>
   </div>
 </template>
 
