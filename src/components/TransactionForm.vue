@@ -48,20 +48,25 @@ const transactionDetails = ref('');
 const transactionAmount = ref('');
 const toast = useToast();
 
+const emit = defineEmits(['transactionSubmitted']);
+
 const onSubmit = () => {
     if (!transactionDetails.value || !transactionAmount.value) {
         toast.error('Anda perlu isi Details & Amount!');
         return;
     }
 
-    console.log(transactionDetails.value);
-    console.log(transactionAmount.value);
+    const transactionData = {
+        transactionDetails: transactionDetails.value,
+        transactionAmount: parseFloat(transactionAmount.value)
+    }
+
+    emit('transactionSubmitted', transactionData);
 
     transactionDetails.value = '';
     transactionAmount.value = '';
 
     toast.success('Your transaction has been recorded!');
-
 }
 </script>
 
