@@ -3,7 +3,8 @@
     <div class="col-10 col-md-6 mx-auto">
       <Header />
       <RemainingBalance :total="total" />
-      <IncomeExpenses />
+      <IncomeExpenses :income="income"
+        :expenses="expenses" />
       <TransactionForm />
       <TransactionList :transactions="transactions" />
     </div>
@@ -20,14 +21,35 @@ import TransactionList from './components/TransactionList.vue';
 import { ref, computed } from 'vue';
 
 const transactions = ref([
-  { id: 1, text: 'Beli Nasi Abe', amount: -20.00 },
+  { id: 1, text: 'Beli Nasi Abe', amount: -30.00 },
   { id: 2, text: 'Beli Kopi Latte', amount: -10.50 },
-  { id: 2, text: 'Elaun Kelas Design', amount: 150.00 },
+  { id: 3, text: 'Elaun Kelas Design', amount: 950.00 },
 ]);
 
+// Dapatkan total kesemua duit keluar-masuk
 const total = computed(() => {
   return transactions.value.reduce((accumulator, transaction) => {
     return accumulator + transaction.amount
   }, 0);
-})
+});
+
+// Dapatkan total income
+const income = computed(() => {
+  return transactions.value.
+    filter((transaction) => transaction.amount > 0)
+    .reduce((accumulator, transaction) => {
+      return accumulator + transaction.amount
+    }, 0).toFixed(2);
+});
+
+// Dapatkan total expenses
+const expenses = computed(() => {
+  return transactions.value.
+    filter((transaction) => transaction.amount < 0)
+    .reduce((accumulator, transaction) => {
+      return accumulator + transaction.amount
+    }, 0).toFixed(2).replace(/^-/, '');;
+});
+
+
 </script>
