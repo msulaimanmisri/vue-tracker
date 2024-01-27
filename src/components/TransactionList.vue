@@ -7,7 +7,7 @@
                 <div v-for="transaction in transactions"
                     :key="transaction.id"
                     class="card card-body shadow-sm border-0 rounded-3 mb-2 position-relative">
-                    <button class="position-absolute border-0 top-0 start-100 translate-middle badge rounded-5 bg-danger"
+                    <button class="position-absolute border-0 top-0 start-80 translate-middle badge rounded-5 bg-danger"
                         id="deleteButton"
                         @click="deleteTransaction(transaction.id)">
                         Delete
