@@ -7,9 +7,9 @@
                 <div v-for="transaction in transactions"
                     :key="transaction.id"
                     class="card card-body shadow-sm border-0 rounded-3 mb-2 position-relative">
-                    <button @click="confirmDelete"
-                        class="position-absolute border-0 top-0 start-100 translate-middle badge rounded-5 bg-danger"
-                        id="deleteButton">
+                    <button class="position-absolute border-0 top-0 start-100 translate-middle badge rounded-5 bg-danger"
+                        id="deleteButton"
+                        @click="deleteTransaction(transaction.id)">
                         Delete
                     </button>
 
@@ -55,6 +55,10 @@
 // Props
 import { defineProps } from 'vue';
 
+const emit = defineEmits([
+    'transactionDeleted'
+]);
+
 const props = defineProps({
     transactions: {
         type: Array,
@@ -62,9 +66,17 @@ const props = defineProps({
     },
 })
 
-function confirmDelete() {
+const confirmDelete = () => {
     return confirm('Pasti ke nak delete?');
 }
+
+const deleteTransaction = (id) => {
+    if (confirmDelete()) {
+        emit('transactionDeleted', id);
+    };
+}
+
+
 </script>
 
 
