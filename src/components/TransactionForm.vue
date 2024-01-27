@@ -1,8 +1,9 @@
 <template>
-    <div class="mt-4">
-        <h4 class="fs-5">Your Transaction :</h4>
+    <div class="mt-5">
+        <h4 class="fs-5">Enter Your Transaction :</h4>
+
         <form id="transaction-form"
-            class="form-group">
+            class="card card-body form-group shadow-sm rounded-3 p-4">
 
             <div id="expenses-details">
                 <label for="details"
@@ -15,7 +16,7 @@
             </div>
 
             <div id="expenses-amount"
-                class="mt-3">
+                class="my-3">
                 <label for="amount"
                     class="form-label"> Amount </label>
 
@@ -24,6 +25,20 @@
                     name="amount"
                     class="form-control">
             </div>
+
+            <div id="submitButton"
+                class="mt-3">
+                <button class="btn btn-primary"
+                    type="submit">Add Transaction</button>
+            </div>
+
         </form>
+
     </div>
 </template>
+
+<style scoped>
+.card {
+    border: 2px dashed rgb(56, 142, 195)
+}
+</style>

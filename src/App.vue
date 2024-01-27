@@ -4,7 +4,7 @@
       <Header />
       <RemainingBalance :total="total" />
       <IncomeExpenses />
-      <addTransaction />
+      <TransactionForm />
       <TransactionList :transactions="transactions" />
     </div>
   </div>
@@ -14,7 +14,7 @@
 import Header from './components/Header.vue';
 import RemainingBalance from './components/RemainingBalance.vue';
 import IncomeExpenses from './components/IncomeExpenses.vue';
-import AddTransaction from './components/AddTransaction.vue';
+import TransactionForm from './components/TransactionForm.vue';
 import TransactionList from './components/TransactionList.vue';
 
 import { ref, computed } from 'vue';
