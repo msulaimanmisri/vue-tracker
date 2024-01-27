@@ -19,15 +19,23 @@ import IncomeExpenses from './components/IncomeExpenses.vue';
 import TransactionForm from './components/TransactionForm.vue';
 import TransactionList from './components/TransactionList.vue';
 import { useToast } from 'vue-toastification';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 const toast = useToast();
 
 const transactions = ref([
-  { id: 1, text: 'Elaun Kelas Design', amount: 950.00 },
-  { id: 2, text: 'Beli Nasi Abe', amount: -30.00 },
-  { id: 3, text: 'Beli Kopi Latte', amount: -10.50 },
+  // { id: 1, text: 'Elaun Kelas Design', amount: 950.00 },
+  // { id: 2, text: 'Beli Nasi Abe', amount: -30.00 },
+  // { id: 3, text: 'Beli Kopi Latte', amount: -10.50 },
 ]);
+
+onMounted(() => {
+  const savedTransactions = JSON.parse(localStorage.getItem('transactions'));
+
+  if (savedTransactions) {
+    transactions.value = savedTransactions;
+  }
+});
 
 // Dapatkan total kesemua duit keluar-masuk
 const total = computed(() => {
@@ -62,7 +70,7 @@ const handleTransactionSumbitted = (transactionData) => {
     amount: transactionData.transactionAmount
   });
 
-  console.log(generateUniqueId());
+  saveTransactionsToLocalStorage();
 }
 
 // Generate Unique ID
@@ -73,6 +81,12 @@ const generateUniqueId = () => {
 // Handle transaction delete
 const handleTransactionDeleted = (id) => {
   transactions.value = transactions.value.filter((transaction) => transaction.id !== id);
+  saveTransactionsToLocalStorage();
   toast.success('Transaction has been deleted!');
+}
+
+// Save to Localstorage
+const saveTransactionsToLocalStorage = () => {
+  localStorage.setItem('transactions', JSON.stringify(transactions.value));
 }
 </script>
