@@ -23,11 +23,7 @@ import { ref, computed, onMounted } from 'vue';
 
 const toast = useToast();
 
-const transactions = ref([
-  // { id: 1, text: 'Elaun Kelas Design', amount: 950.00 },
-  // { id: 2, text: 'Beli Nasi Abe', amount: -30.00 },
-  // { id: 3, text: 'Beli Kopi Latte', amount: -10.50 },
-]);
+const transactions = ref([]);
 
 onMounted(() => {
   const savedTransactions = JSON.parse(localStorage.getItem('transactions'));

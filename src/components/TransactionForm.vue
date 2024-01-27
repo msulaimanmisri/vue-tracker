@@ -27,6 +27,9 @@
                     name="amount"
                     class="form-control text-muted"
                     v-model="transactionAmount">
+
+                <span class="form-text text-danger">** Use dash (-) if you wanted to add expense. By default this input
+                    field will add Income</span>
             </div>
 
             <div id="submitButton"
