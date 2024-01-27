@@ -23,7 +23,7 @@
                                     transaction.text
                                 }}
                                 </span>
-                                <h4>{{ transaction.amount < 0
+                                <h4 class="mt-2">{{ transaction.amount < 0
                                     ? 'RM '
                                     +
                                     Math.abs(transaction.amount).toLocaleString(undefined,

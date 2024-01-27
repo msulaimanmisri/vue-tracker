@@ -1,6 +1,6 @@
 <template>
   <div class="container my-5">
-    <div class="col-10 col-md-6 mx-auto">
+    <div class="col-12 col-md-6 mx-auto">
       <Header />
       <RemainingBalance :total="total" />
       <IncomeExpenses :income="+income"

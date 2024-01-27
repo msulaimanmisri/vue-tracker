@@ -1,6 +1,6 @@
 <template>
     <div class="mt-5">
-        <h4 class="fs-5">Enter Your Transaction :</h4>
+        <h4 class="fs-5 mb-3">Enter Your Transaction :</h4>
 
         <form id="transaction-form"
             class="card card-body form-group shadow-sm rounded-3 p-4"
@@ -28,8 +28,9 @@
                     class="form-control text-muted"
                     v-model="transactionAmount">
 
-                <span class="form-text text-danger">** Use dash (-) if you wanted to add expense. By default this input
-                    field will add Income</span>
+                <span class="form-text text-danger">** Use dash (-) if you wanted to add expenses (e.g -300). By default,
+                    all
+                    transaction is consider as income.</span>
             </div>
 
             <div id="submitButton"
