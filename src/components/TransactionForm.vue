@@ -3,7 +3,8 @@
         <h4 class="fs-5">Enter Your Transaction :</h4>
 
         <form id="transaction-form"
-            class="card card-body form-group shadow-sm rounded-3 p-4">
+            class="card card-body form-group shadow-sm rounded-3 p-4"
+            @submit.prevent="onSubmit">
 
             <div id="expenses-details">
                 <label for="details"
@@ -36,6 +37,13 @@
 
     </div>
 </template>
+
+<script setup>
+
+const onSubmit = () => {
+    console.log('send');
+}
+</script>
 
 <style scoped>
 .card {

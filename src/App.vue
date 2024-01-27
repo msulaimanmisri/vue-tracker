@@ -3,8 +3,8 @@
     <div class="col-10 col-md-6 mx-auto">
       <Header />
       <RemainingBalance :total="total" />
-      <IncomeExpenses :income="income"
-        :expenses="expenses" />
+      <IncomeExpenses :income="+income"
+        :expenses="+expenses" />
       <TransactionForm />
       <TransactionList :transactions="transactions" />
     </div>
