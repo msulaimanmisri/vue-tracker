@@ -13,7 +13,8 @@
                 <input type="text"
                     id="details"
                     name="details"
-                    class="form-control">
+                    class="form-control text-muted"
+                    v-model="transactionDetails">
             </div>
 
             <div id="expenses-amount"
@@ -24,7 +25,8 @@
                 <input type="number"
                     id="amount"
                     name="amount"
-                    class="form-control">
+                    class="form-control text-muted"
+                    v-model="transactionAmount">
             </div>
 
             <div id="submitButton"
@@ -39,9 +41,27 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { useToast } from 'vue-toastification';
+
+const transactionDetails = ref('');
+const transactionAmount = ref('');
+const toast = useToast();
 
 const onSubmit = () => {
-    console.log('send');
+    if (!transactionDetails.value || !transactionAmount.value) {
+        toast.error('Anda perlu isi Details & Amount!');
+        return;
+    }
+
+    console.log(transactionDetails.value);
+    console.log(transactionAmount.value);
+
+    transactionDetails.value = '';
+    transactionAmount.value = '';
+
+    toast.success('Your transaction has been recorded!');
+
 }
 </script>
 
